@@ -4,10 +4,12 @@
  */
 package com.lin.cache.util;
 
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.JSONString;
+import org.json.JSONObject;
 
 import java.util.Map;
 import java.lang.reflect.Array;
@@ -57,7 +59,7 @@ public class JSONUtils {
             if (value.getClass().isArray()) {
                 return new JSONArray(value).toString();
             }
-            return new JSONObject(value).toString();
+            return new JSONObject((Map) value).toString();
         } catch (JSONException e) {
             throw new RuntimeException(e.getMessage());
         }
