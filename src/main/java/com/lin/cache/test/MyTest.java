@@ -22,4 +22,11 @@ public class MyTest {
         System.out.println(ss);
         return ss;
     }
+    @SmartCache(key = "args[0]", expire = 60 * 30)
+    public Person setObject(String string){
+        Person person = new Person();
+        person.setName(string);
+        person.setAge(12);
+        return person;
+    }
 }

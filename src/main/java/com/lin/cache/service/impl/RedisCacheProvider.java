@@ -160,6 +160,7 @@ public class RedisCacheProvider extends AbstractCacheProvider implements CachePr
 		String finalKey = new StringBuilder(appName).append("/").append(group).append("/").append(key).toString();
 		Object obj = null;
 		try {
+			System.out.println("::::"+SafeEncoder.encode(finalKey));
 			obj = getObject(SafeEncoder.encode(finalKey));
 		} catch (Throwable e) {
 			throw new RuntimeException(e);
@@ -318,7 +319,7 @@ public class RedisCacheProvider extends AbstractCacheProvider implements CachePr
 
 		map.put(SafeEncoder.encode("type"), NativeHandler.encode(type));
 		map.put(SafeEncoder.encode("value"), valueBytes);
-
+		System.out.println("::::"+SafeEncoder.encode(key));
 		return hmset(SafeEncoder.encode(key), expire, map);
 	}
 	
